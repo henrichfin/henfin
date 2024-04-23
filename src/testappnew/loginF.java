@@ -9,6 +9,8 @@ import admin.dashboard;
 import admin.dashboard;
 import config.Session;
 import config.dbConnector;
+import config.passwordHasher;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -40,10 +42,18 @@ public class loginF extends javax.swing.JFrame {
         dbConnector connector = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
+            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
            if(resultSet.next()){
-               status = resultSet.getString("u_status");
+               
+             
+               String hashedPassword= resultSet.getString("u_password");
+               String rehashedPass = passwordHasher.hashPassword(password);
+               System.out.println(""+hashedPassword);
+               System.out.println(""+rehashedPass);
+               
+                if( hashedPassword.equals(rehashedPass)){
+                 status = resultSet.getString("u_status");
                  type = resultSet.getString("u_type");
                  Session sess = Session.getInstance();
                  sess.setUid(resultSet.getInt("u_id"));
@@ -56,16 +66,18 @@ public class loginF extends javax.swing.JFrame {
                  fname = resultSet.getString("u_fname");
                  lname = resultSet.getString("u_lname");
                return true;
-               
-           }else{
+                }else{
                return false;
-           }
-        }catch (SQLException ex) {
-            return false;
+                }
+                }else{
+                return false;
+                            
+                }
+               }catch(SQLException | NoSuchAlgorithmException ex){
+                   System.out.println(""+ex);
+                   return false;
+               }
         }
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,7 +95,7 @@ public class loginF extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        pw = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
         un = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,7 +141,7 @@ public class loginF extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        jPanel2.add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 150, -1));
+        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 150, -1));
 
         un.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +165,7 @@ public class loginF extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(loginAcc(un.getText(), pw.getText())){
+        if(loginAcc(un.getText(), password.getText())){
             if(!status.equals("Active")){
                 JOptionPane.showMessageDialog(null, "IN-ACTIVE, CONTACT THE ADMIN");
             }else{
@@ -184,7 +196,7 @@ public class loginF extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unActionPerformed
 
-    
+
     
     /**
      * @param args the command line arguments
@@ -230,7 +242,7 @@ public class loginF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField pw;
+    private javax.swing.JTextField password;
     private javax.swing.JTextField un;
     // End of variables declaration//GEN-END:variables
 }

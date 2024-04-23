@@ -61,7 +61,7 @@ public class createduserform extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         
         try{
-            String query = "SELECT * FROM tbl_user  WHERE (u_username = '" + us.getText() + "' OR u_email = '" + mail.getText() + "')AND u_id !='"+uid.getText()+"'";
+            String query = "SELECT * FROM tbl_user  WHERE (u_username = '" + us.getText() + "' OR u_email = '" + mail.getText() + "')AND u_id ='"+uid.getText()+"'";
             ResultSet resultSet = dbc.getData(query);
             
             if(resultSet.next()){
@@ -227,7 +227,7 @@ public class createduserform extends javax.swing.JFrame {
         }else if(pw.getText().length() < 8){
             JOptionPane.showMessageDialog(null, "Characters password is 8 above!");
             pw.setText("");
-        }else if(duplicateCheck()){
+        }else if(updateCheck()){
             System.out.println("Duplicate Exist!");
             
         }else{
@@ -235,7 +235,7 @@ public class createduserform extends javax.swing.JFrame {
         dbConnector dbc = new dbConnector();
         dbc.updateData("UPDATE tbl_user SET u_fname = '"+fn.getText()+"',u_lname ='"+ln.getText()+"',u_email ='"+mail.getText()+"',"
                 + "u_username ='"+us.getText()+"',"
-                + "u_password ='"+pw.getText()+"',,u_type ='"+ut.getSelectedItem()+"'WHERE u_id ='"+uid.getText()+"'");
+                + "u_password ='"+pw.getText()+"',u_type ='"+ut.getSelectedItem()+"'WHERE u_id ='"+uid.getText()+"'");
          
           JOptionPane.showMessageDialog(null, "Updated Successfully!");
           loginF ads = new loginF();

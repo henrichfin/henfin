@@ -6,6 +6,8 @@
 package register;
 
 import config.dbConnector;
+import config.passwordHasher;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -81,11 +83,13 @@ public class registF extends javax.swing.JFrame {
         ln = new javax.swing.JTextField();
         mail = new javax.swing.JTextField();
         us = new javax.swing.JTextField();
-        pw = new javax.swing.JTextField();
         ut = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        ust = new javax.swing.JComboBox<>();
+        pw = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 450));
@@ -109,13 +113,12 @@ public class registF extends javax.swing.JFrame {
         jLabel6.setText("Password:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
-        jLabel7.setText("AccountType:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+        jLabel7.setText("User Status:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
         getContentPane().add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 190, -1));
         getContentPane().add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 190, -1));
         getContentPane().add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, -1));
         getContentPane().add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 190, -1));
-        getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 190, -1));
 
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin", " " }));
         getContentPane().add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 190, -1));
@@ -126,7 +129,7 @@ public class registF extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
 
         jButton2.setText("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +137,7 @@ public class registF extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 255));
@@ -144,7 +147,14 @@ public class registF extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
+
+        jLabel9.setText("AccountType:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        ust.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending", " " }));
+        getContentPane().add(ust, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 190, -1));
+        getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 190, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -163,13 +173,15 @@ public class registF extends javax.swing.JFrame {
             pw.setText("");
         }else if(duplicateCheck()){
             System.out.println("Duplicate Exist!");
-            
         }else{
-            
-             dbConnector dbc = new dbConnector();
+          dbConnector dbc = new dbConnector();
+          
+          try{
+          String pass = passwordHasher.hashPassword(pw.getText());
        
       if (dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_username, u_password, u_type, u_status) VALUES('"
-     + fn.getText() + "','"+ln.getText()+"','"+ mail.getText() + "','" + us.getText() + "','" + pw.getText() + "','" + ut.getSelectedItem() + "','Pending')")){
+     + fn.getText() + "','"+ln.getText()+"','"+ mail.getText() + "','" + us.getText() + "','" + pass + "','" + ut.getSelectedItem() + "','Pending')"))
+      {
           
         
           JOptionPane.showMessageDialog(null, "Inserted Successfully!");
@@ -179,12 +191,13 @@ public class registF extends javax.swing.JFrame {
           
       }else{
           JOptionPane.showMessageDialog(null, "Connection Error!");
-      }
-            
-        }        
-        
+      
+      }     
+        }catch(NoSuchAlgorithmException ex){
+        System.out.println(""+ex);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+        }
+    }
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
             loginF ads = new loginF();
        ads.setVisible(true);
@@ -244,10 +257,12 @@ public class registF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField ln;
     private javax.swing.JTextField mail;
-    private javax.swing.JTextField pw;
+    private javax.swing.JPasswordField pw;
     private javax.swing.JTextField us;
+    private javax.swing.JComboBox<String> ust;
     private javax.swing.JComboBox<String> ut;
     // End of variables declaration//GEN-END:variables
 }
