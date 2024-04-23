@@ -95,8 +95,11 @@ public class loginF extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
         un = new javax.swing.JTextField();
+        password = new javax.swing.JPasswordField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,7 +144,6 @@ public class loginF extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 150, -1));
 
         un.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,14 +151,31 @@ public class loginF extends javax.swing.JFrame {
             }
         });
         jPanel2.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 150, -1));
+        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 150, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 330, 220));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 220));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 410));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 350, 220));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel4.setLayout(null);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eyeshadow aesthetic vintage makeup aesthetic.jpg"))); // NOI18N
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(0, 0, 310, 410);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 410));
+
+        jPanel3.setBackground(new java.awt.Color(255, 102, 102));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 350, 190));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void unActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         registF ads = new registF();
@@ -189,12 +208,7 @@ public class loginF extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Invalid Account");
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void unActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unActionPerformed
 
 
     
@@ -240,9 +254,12 @@ public class loginF extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField password;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField un;
     // End of variables declaration//GEN-END:variables
 }

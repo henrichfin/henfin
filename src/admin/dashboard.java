@@ -63,7 +63,7 @@ public class dashboard extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         acc_fname.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         acc_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,7 +106,7 @@ public class dashboard extends javax.swing.JFrame {
         jPanel4.add(jLabel5);
         jLabel5.setBounds(20, 50, 50, 20);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 90, 80));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 90, 80));
 
         pack();
         setLocationRelativeTo(null);

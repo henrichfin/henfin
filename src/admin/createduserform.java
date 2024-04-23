@@ -21,9 +21,7 @@ import user.userDash;
  */
 public class createduserform extends javax.swing.JFrame {
 
-    /**
-     * Creates new form createduserform
-     */
+   
     public createduserform() {
         initComponents();
     }

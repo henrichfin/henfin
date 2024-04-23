@@ -143,7 +143,7 @@ public class accountDetails extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         loginF ads = new loginF();
-        JOptionPane.showMessageDialog(null, "log-out Success! ");
+        JOptionPane.showMessageDialog(null, "Log Out, Successfully! ");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -156,6 +156,8 @@ fn.setText(""+sess.getFname());
 ln.setText(""+sess.getLname());
 mail.setText(""+sess.getEmail());
 us.setText(""+sess.getUsername());
+ acc_fname.setText(""+sess.getFname());
+   acc_lname.setText(""+sess.getLname());
     }//GEN-LAST:event_formWindowActivated
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
