@@ -8,8 +8,13 @@ package admin;
 import testappnew.loginF;
 import config.Session;
 import config.dbConnector;
+import static java.awt.AWTEventMulticaster.remove;
+import static java.awt.AWTEventMulticaster.remove;
+import static java.awt.AWTEventMulticaster.remove;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -157,6 +162,7 @@ public class userLoginF extends javax.swing.JFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 60, -1));
 
         jButton1.setText("Cancel");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -212,8 +218,8 @@ public class userLoginF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        loginF ads = new loginF();
-        ads.setVisible(true);
+        loginF lf = new loginF();
+        lf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -253,7 +259,10 @@ public class userLoginF extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         createduserform crf = new createduserform();
         crf.setVisible(true);
+        crf.remove.setEnabled(false);
+        crf.select.setEnabled(true); 
         this.dispose();
+   
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -277,11 +286,25 @@ public class userLoginF extends javax.swing.JFrame {
             crf.pw.setText(""+rs.getString("u_password"));
             crf.ut.setSelectedItem(""+rs.getString("u_type"));
             crf.ust.setSelectedItem(""+rs.getString("u_status"));
+            crf.image.setIcon(crf.ResizeImage(rs.getString("u_image"), null, crf.image));
+            crf.oldpath = rs.getString("u_image");
+            crf.path = rs.getString("u_image");
+            crf.destination=rs.getString("u_image");
+            crf.destination=rs.getString("u_image");
             crf.add.setEnabled(false);
             crf.update.setEnabled(true);
             crf.setVisible(true);
-            this.dispose();
+          
             
+            if(rs.getString("u_image").isEmpty()){
+                crf.select.setEnabled(true);
+                crf.remove.setEnabled(false);
+            }else{
+                crf.select.setEnabled(false);
+                crf.select.setEnabled(true);
+                
+            }
+            this.dispose();
             }
         }catch(SQLException ex){
             System.out.println(""+ex);
