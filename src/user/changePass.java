@@ -42,10 +42,10 @@ public class changePass extends javax.swing.JFrame {
         acc_fname = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         acc_last = new javax.swing.JLabel();
+        iddisplay = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        iddisplay = new javax.swing.JLabel();
         op = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -80,13 +80,16 @@ public class changePass extends javax.swing.JFrame {
         acc_last.setText("USER");
         jPanel1.add(acc_last, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 140, 30));
 
+        iddisplay.setText("(UID)");
+        jPanel1.add(iddisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 140, 260));
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CHANGE PASSOWRD");
+        jLabel1.setText("CHANGE PASSWORD");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 163, 34));
 
         jButton2.setText("LOGOUT");
@@ -96,9 +99,6 @@ public class changePass extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
-
-        iddisplay.setText("(UID)");
-        jPanel2.add(iddisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 60));
         getContentPane().add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 190, -1));

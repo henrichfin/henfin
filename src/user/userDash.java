@@ -32,19 +32,19 @@ public class userDash extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jPanel1 = new javax.swing.JPanel();
         user_account = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         last_name = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+
+        jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -58,6 +58,7 @@ public class userDash extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         user_account.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        user_account.setForeground(new java.awt.Color(255, 255, 255));
         user_account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         user_account.setText("USER");
         jPanel1.add(user_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, 30));
@@ -67,18 +68,15 @@ public class userDash extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 70));
 
         last_name.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        last_name.setForeground(new java.awt.Color(255, 255, 255));
         last_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         last_name.setText("USER");
         jPanel1.add(last_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 80, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 140, 260));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("USER DASHBOARD");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 163, 34));
 
         jButton2.setText("LOGOUT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -89,27 +87,6 @@ public class userDash extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 60));
-
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
-            }
-        });
-        jPanel4.setLayout(null);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("USERS");
-        jPanel4.add(jLabel5);
-        jLabel5.setBounds(40, 80, 50, 20);
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-select-users-96.png"))); // NOI18N
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(20, 10, 100, 80);
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 130, 100));
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,11 +102,12 @@ public class userDash extends javax.swing.JFrame {
         jPanel3.add(jLabel4);
         jLabel4.setBounds(40, 80, 52, 14);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-details-96.png"))); // NOI18N
         jPanel3.add(jLabel6);
         jLabel6.setBounds(20, 10, 90, 70);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 130, 100));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 130, 100));
 
         pack();
         setLocationRelativeTo(null);
@@ -141,12 +119,6 @@ public class userDash extends javax.swing.JFrame {
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-       userLoginF us = new userLoginF();
-       us.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jPanel4MouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
          Session sess = Session.getInstance();
@@ -207,16 +179,14 @@ public class userDash extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel last_name;
     public javax.swing.JLabel user_account;
     // End of variables declaration//GEN-END:variables
